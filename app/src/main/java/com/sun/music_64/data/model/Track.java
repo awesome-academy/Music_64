@@ -18,6 +18,12 @@ public class Track implements Serializable {
     public Track() {
     }
 
+    public Track(int id, String title, String user) {
+        mId = id;
+        mTitle = title;
+        mArtist = user;
+    }
+
     public int getId() {
         return mId;
     }
