@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/dp_5"
         android:layout_marginEnd="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_1"
+        android:src="@drawable/audio"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_genre" />
@@ -48,7 +48,7 @@
         android:layout_marginStart="@dimen/dp_5"
         android:layout_marginTop="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_2"
+        android:src="@drawable/rock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/text_genre" />
@@ -73,7 +73,7 @@
         android:layout_marginTop="@dimen/dp_5"
         android:layout_marginEnd="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_3"
+        android:src="@drawable/country"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_all_audio" />
@@ -98,7 +98,7 @@
         android:layout_marginStart="@dimen/dp_5"
         android:layout_marginTop="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_4"
+        android:src="@drawable/classical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/image_rock" />
@@ -123,7 +123,7 @@
         android:layout_marginTop="@dimen/dp_5"
         android:layout_marginEnd="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_5"
+        android:src="@drawable/allmusicfake"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_country" />
@@ -148,7 +148,7 @@
         android:layout_marginStart="@dimen/dp_5"
         android:layout_marginTop="@dimen/dp_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/genre_6"
+        android:src="@drawable/ambient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/image_classical" />
