@@ -31,4 +31,13 @@ public class StringUtils {
                 , trackId
                 , BuildConfig.CLIENT_ID);
     }
+
+    private static StringBuilder mStringBuider = new StringBuilder();
+
+    public static String addString(String ...strings) {
+        for (int i = 0; i < strings.length; i++) {
+            mStringBuider.append(strings[i]);
+        }
+        return mStringBuider.toString();
+    }
 }
