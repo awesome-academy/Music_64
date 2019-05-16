@@ -11,4 +11,8 @@
     <string name="title_classical">Classical</string>
     <string name="title_country">Country</string>
     <string name="search_music">Search</string>
+    <string name="shuffle">shuffle</string>
+    <string name="number_1">1</string>
+    <string name="sing">Cuoc vui co don</string>
+    <string name="user">Le bao binh</string>
 </resources>
