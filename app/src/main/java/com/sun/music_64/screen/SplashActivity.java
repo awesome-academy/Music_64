@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
     private static final long TIME_DELAY = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

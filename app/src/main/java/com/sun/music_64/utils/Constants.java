@@ -11,12 +11,20 @@ public class Constants {
             = "https://api.soundcloud.com/tracks/%d/download?client_id=%s";
     public static final String BASE_STREAM_URL
             = "https://api.soundcloud.com/tracks/%d/stream?client_id=%s";
-    public static final String KIND_TREND = "trend";
-    public static final String GENRES_ALL_MUSIC = "soundcloud:genres:all-music";
-    public static final String GENRES_ALL_AUDIO = "soundcloud:genres:all-audio";
-    public static final String GENRES_ROCK = "soundcloud:genres:alternativerock";
-    public static final String GENRES_AMBIENT = "soundcloud:genres:ambient";
-    public static final String GENRES_CLASSICAL = "soundcloud:genres:classical";
-    public static final String GENRES_COUNTRY = "soundcloud:genres:country";
     public static final String CLIENT_ID = BuildConfig.CLIENT_ID;
+    public final static String URL_ID = "id";
+    public final static String URL_TITLE = "title";
+    public final static String URL_COLLECTION = "collection";
+    public final static String URL_TRACK = "track";
+    public final static String URL_USER = "user";
+    public final static String URL_USER_NAME = "username";
+    public final static String URL_DUARTION = "duration";
+    public final static String URL_DOWNLOADABLE = "downloadable";
+    public final static String URL_ARTWORK = "artwork_url";
+    public final static String URL_AVATAR = "avatar_url";
+    public final static String URL_USER_KEY = "User_Agent";
+    public final static String URL_USER_VALUE = "my-rest-app-v0.1";
+    public final static int URL_REQUEST_TIME = 3000;
+    public final static int URL_REQUEST_CODE = 200;
+    public final static String URL_REQUEST_METHOD = "GET";
 }

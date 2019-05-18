@@ -4,6 +4,7 @@ public class Genre {
     private String mName;
     private String mKey;
     private int mImageId;
+
     public Genre(String name, String key, int id) {
         mName = name;
         mKey = key;
