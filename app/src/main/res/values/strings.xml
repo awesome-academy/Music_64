@@ -15,4 +15,5 @@
     <string name="number_1">1</string>
     <string name="sing">Cuoc vui co don</string>
     <string name="user">Le bao binh</string>
+    <string name="error_play_track">Can not play track</string>
 </resources>
