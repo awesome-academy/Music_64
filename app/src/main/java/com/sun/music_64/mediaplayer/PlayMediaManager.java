@@ -34,6 +34,10 @@ public class PlayMediaManager extends PlayMusicSetting
         return sIntance;
     }
 
+    public Track getCurrentTrack() {
+        return mCurrentTrack;
+    }
+
     @Override
     public void create(Track track) {
         mMediaPlayer.reset();
