@@ -11,14 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".screen.mainplay.MainPlayActivity" />
-        <activity android:name=".screen.genrescreen.GenreActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-        </activity>
+        <activity android:name=".screen.genrescreen.GenreActivity" />
         <activity
             android:name=".screen.MainActivity"
             android:launchMode="singleTask"
@@ -27,7 +20,14 @@
         <service android:name=".service.PlayMusicService" />
         <activity
             android:name=".screen.SplashActivity"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
