@@ -20,7 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.MainActivity" />
+        <activity
+            android:name=".screen.MainActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".screen.MainActivity" />
 
         <service android:name=".service.PlayMusicService" />
     </application>

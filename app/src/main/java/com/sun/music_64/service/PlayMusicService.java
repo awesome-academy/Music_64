@@ -1,5 +1,6 @@
 package com.sun.music_64.service;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -14,18 +15,21 @@ import com.sun.music_64.mediaplayer.LoopType;
 import com.sun.music_64.mediaplayer.PlayMediaManager;
 import com.sun.music_64.mediaplayer.PlayMusicInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayMusicService extends Service implements
         MediaPlayer.OnErrorListener,
         MediaPlayer.OnPreparedListener,
         MediaPlayer.OnCompletionListener,
-        PlayMusicInterface, LoadingTrackListener {
+        PlayMusicInterface {
     public static final String ACTION_PREVIOUS = "com.sun.music_64.ACTION_PREVIOUS";
     public static final String ACTION_PLAY_AND_PAUSE = "com.sun.music_64.ACTION_PLAY_PAUSE";
     public static final String ACTION_NEXT = "com.sun.music_64.ACTION_NEXT";
     private IBinder mIBinder;
     private PlayMediaManager mManager;
+    private NotificationMusic mNotification;
+    private List<LoadingTrackListener> mListener;
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, PlayMusicService.class);
@@ -36,6 +40,8 @@ public class PlayMusicService extends Service implements
         super.onCreate();
         mIBinder = new MyBinder();
         mManager = PlayMediaManager.getIntance(this);
+        mListener = new ArrayList<>();
+        mNotification = new NotificationMusic();
     }
 
     @Override
@@ -50,6 +56,7 @@ public class PlayMusicService extends Service implements
                 } else {
                     start();
                 }
+                mNotification.updatePlayAndPauseState(isPlaying());
                 break;
             case ACTION_PREVIOUS:
                 previous();
@@ -120,21 +127,30 @@ public class PlayMusicService extends Service implements
     @Override
     public void start() {
         mManager.start();
+        Track track = mManager.getCurrentTrack();
+        Notification notification = mNotification.initLayoutNotification(this, track);
+        mNotification.updatePlayAndPauseState(isPlaying());
+        startForeground(NotificationMusic.NOTIFICATION_ID, notification);
+        updateTrackState();
     }
 
     @Override
     public void pause() {
         mManager.pause();
+        stopForeground(true);
+        updateTrackState();
     }
 
     @Override
     public void previous() {
         mManager.previous();
+        updateTrackChange();
     }
 
     @Override
     public void next() {
         mManager.next();
+        updateTrackChange();
     }
 
     @Override
@@ -204,19 +220,23 @@ public class PlayMusicService extends Service implements
         return mManager.getTracks();
     }
 
-    @Override
-    public void onChangeTrack() {
-
-    }
-
-    @Override
-    public void onTrackState(boolean isPlaying) {
-
-    }
-
     public void onFailure() {
         Toast.makeText(this, getString(R.string.error_play_track),
                 Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateTrackState() {
+        mNotification.updatePlayAndPauseState(isPlaying());
+        for (LoadingTrackListener listener : mListener) {
+            listener.onTrackState(isPlaying());
+        }
+    }
+
+    private void updateTrackChange() {
+        mNotification.updatePlayAndPauseState(isPlaying());
+        for (LoadingTrackListener listener : mListener) {
+            listener.onChangeTrack(mManager.getCurrentTrack());
+        }
     }
 
     public class MyBinder extends Binder {
