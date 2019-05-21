@@ -34,7 +34,7 @@ public class StringUtils {
 
     private static StringBuilder mStringBuider = new StringBuilder();
 
-    public static String addString(String ...strings) {
+    public static String addStrings(String... strings) {
         for (int i = 0; i < strings.length; i++) {
             mStringBuider.append(strings[i]);
         }
