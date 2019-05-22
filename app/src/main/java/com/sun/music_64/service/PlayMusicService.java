@@ -182,8 +182,8 @@ public class PlayMusicService extends Service implements
         mManager.setLoopType(type);
     }
 
-    public void getLoop() {
-        mManager.getLoopType();
+    public int getLoop() {
+        return mManager.getLoopType();
     }
 
     @Override
@@ -239,9 +239,21 @@ public class PlayMusicService extends Service implements
         }
     }
 
+    public int getShuffle() {
+        return mManager.getShuffleType();
+    }
+
     public class MyBinder extends Binder {
         public PlayMusicService getService() {
             return PlayMusicService.this;
         }
+    }
+
+    public Track getCurrentTrack(){
+        return mManager.getCurrentTrack();
+    }
+
+    public void addPlayMusicListener(LoadingTrackListener listener) {
+        mListener.add(listener);
     }
 }
