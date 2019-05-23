@@ -8,4 +8,7 @@
     <color name="color_tim">#9C27B0</color>
     <color name="orange">#FFC107</color>
     <color name="purple">#9C27B0</color>
+    <color name="yellow">#FFEB4B</color>
+    <color name="blue_white">#F6F8FF</color>
+    <color name="blue">#3F51B5</color>
 </resources>

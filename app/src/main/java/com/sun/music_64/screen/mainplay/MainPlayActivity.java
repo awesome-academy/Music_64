@@ -82,7 +82,7 @@ public class MainPlayActivity extends AppCompatActivity implements MainPlayContr
                 .load(track.getArtworkUrl())
                 .apply(new RequestOptions().circleCrop())
                 .into(mImageArtwork);
-        displayImageDownload(track.isDownload());
+        displayImageDownload(track.isDownloadable());
         displayShuffleState(mService.getShuffle());
         displayLoopState(mService.getLoop());
         displayMediaPlayerState(mService.isPlaying());
