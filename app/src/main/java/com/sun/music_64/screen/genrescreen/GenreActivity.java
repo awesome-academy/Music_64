@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -37,6 +38,11 @@ public class GenreActivity extends AppCompatActivity implements GenreContract.Vi
         initviews();
         initToolbar();
         initRecyclerGenres();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getData();
     }
 
@@ -65,10 +71,10 @@ public class GenreActivity extends AppCompatActivity implements GenreContract.Vi
         return true;
     }
 
-    public static void getIntent(Context context, String keyGenre) {
+    public static Intent getIntent(Context context, String keyGenre) {
         Intent intent = new Intent(context, GenreActivity.class);
         intent.putExtra(KEY_PUT, keyGenre);
-        context.startActivity(intent);
+        return intent;
     }
 
     private void initviews() {
@@ -96,8 +102,7 @@ public class GenreActivity extends AppCompatActivity implements GenreContract.Vi
     }
 
     private void getData() {
-        String genre = GenreEntity.GENRES_ALL_MUSIC;
-        initPresenter(genre);
+        initPresenter(getIntent().getStringExtra(KEY_PUT));
     }
 
     private void initPresenter(String keyGenre) {

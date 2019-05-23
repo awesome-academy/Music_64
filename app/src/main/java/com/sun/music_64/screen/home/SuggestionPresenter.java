@@ -1,25 +1,27 @@
-package com.sun.music_64.screen.genrescreen;
+package com.sun.music_64.screen.home;
 
 import com.sun.music_64.data.model.Track;
 import com.sun.music_64.data.source.remote.ConnectAPI;
 import com.sun.music_64.data.source.remote.NetworkCallback;
+import com.sun.music_64.screen.genrescreen.GenreEntity;
 import com.sun.music_64.utils.StringUtils;
 
 import java.util.List;
 
-public class GenrePresenter implements GenreContract.Presenter, NetworkCallback {
+public class SuggestionPresenter implements SuggestionContract.Presenter, NetworkCallback {
 
-    private GenreContract.View mView;
+    private SuggestionContract.View mView;
     private ConnectAPI mConnectAPI;
 
-    public void setView(GenreContract.View view) {
+    public void setView(SuggestionContract.View view) {
         this.mView = view;
     }
 
     @Override
-    public void handleLoadGenres(String keyGenre, int limit, int offset) {
+    public void handleLoadSuggestion(String keyTrending, int limit, int offset) {
         mConnectAPI = new ConnectAPI(this);
-        mConnectAPI.execute(StringUtils.initGenreApi(GenreEntity.KIND_TREND, keyGenre, limit, offset));
+        mConnectAPI.execute(StringUtils.initGenreApi(keyTrending,
+                GenreEntity.GENRES_ALL_MUSIC, limit, offset));
     }
 
     @Override
@@ -29,11 +31,11 @@ public class GenrePresenter implements GenreContract.Presenter, NetworkCallback 
 
     @Override
     public void receiverSuccess(List<Track> tracks) {
-        mView.loadGenresSuccess(tracks);
+        mView.loadSuggestionSuccess(tracks);
     }
 
     @Override
     public void receiverFail(String error) {
-        mView.loadGenresFailure(error);
+        mView.loadSuggestionFailure(error);
     }
 }
