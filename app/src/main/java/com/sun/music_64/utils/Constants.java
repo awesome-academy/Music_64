@@ -6,7 +6,7 @@ public class Constants {
     public static final String BASE_GENRE_URL
             = "https://api-v2.soundcloud.com/charts?kind=%s&genre=%s&client_id=%s&limit=%d&offset=%d";
     public static final String BASE_SEARCH_URL
-            = "http://api.soundcloud.com/tracks?q=%s&client_id=%s";
+            = "https://api.soundcloud.com/tracks?q=%s&client_id=%s";
     public static final String BASE_DOWNLOAD_URL
             = "https://api.soundcloud.com/tracks/%d/download?client_id=%s";
     public static final String BASE_STREAM_URL

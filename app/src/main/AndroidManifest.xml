@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".screen.mainplay.MainPlayActivity" />
         <activity android:name=".screen.genrescreen.GenreActivity" />
+        <activity android:name=".screen.searchscreen.SearchingActivity" />
         <activity
             android:name=".screen.MainActivity"
             android:launchMode="singleTask"

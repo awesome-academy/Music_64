@@ -16,4 +16,5 @@
     <string name="sing">Cuoc vui co don</string>
     <string name="user">Le bao binh</string>
     <string name="error_play_track">Can not play track</string>
+    <string name="search">Tìm kiếm</string>
 </resources>
