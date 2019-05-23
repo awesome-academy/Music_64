@@ -63,6 +63,7 @@ public class GenreActivity extends AppCompatActivity implements GenreContract.Vi
 
     @Override
     public void onShow(View view, int position) {
+
     }
 
     @Override

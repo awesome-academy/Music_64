@@ -13,6 +13,8 @@ public class Track implements Serializable {
     private String mArtworkUrl;
     private boolean mIsDownloadable;
 
+    public Track() {
+    }
 
     public Track(TrackBuilder trackBuilder) {
         mId = trackBuilder.mId;
