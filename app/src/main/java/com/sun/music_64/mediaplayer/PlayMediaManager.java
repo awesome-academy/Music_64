@@ -1,5 +1,6 @@
 package com.sun.music_64.mediaplayer;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
@@ -41,6 +42,7 @@ public class PlayMediaManager extends PlayMusicSetting
     @Override
     public void create(Track track) {
         mMediaPlayer.reset();
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
             mMediaPlayer.setDataSource(mPlayMusicService, Uri.parse(track.getStreamUrl()));
         } catch (IOException e) {
@@ -163,5 +165,9 @@ public class PlayMediaManager extends PlayMusicSetting
             return true;
         }
         return false;
+    }
+
+    public void removeTrack(Track track) {
+        mTracks.remove(track);
     }
 }

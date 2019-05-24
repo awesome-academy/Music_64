@@ -13,7 +13,7 @@ import android.widget.RemoteViews;
 
 import com.sun.music_64.R;
 import com.sun.music_64.data.model.Track;
-import com.sun.music_64.screen.MainActivity;
+import com.sun.music_64.screen.mainplay.MainPlayActivity;
 
 public class NotificationMusic {
     public static final int NOTIFICATION_ID = 1000;
@@ -33,8 +33,8 @@ public class NotificationMusic {
             );
             notificationManager.createNotificationChannel(channel);
         }
-
-        Intent detailIntent = new Intent(context, MainActivity.class);
+        initViews(context, track);
+        Intent detailIntent = new Intent(context, MainPlayActivity.class);
 
         //use taskstackbuilder to navigate MainActivity
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
@@ -49,7 +49,6 @@ public class NotificationMusic {
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_LOW);
         mManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-        initViews(context, track);
         Notification notification = mBuilder.build();
         clickPreviousButton(context);
         clickPlayButton(context);
