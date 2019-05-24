@@ -256,4 +256,8 @@ public class PlayMusicService extends Service implements
     public void addPlayMusicListener(LoadingTrackListener listener) {
         mListener.add(listener);
     }
+
+    public void removeTrack(Track track) {
+        mManager.removeTrack(track);
+    }
 }
