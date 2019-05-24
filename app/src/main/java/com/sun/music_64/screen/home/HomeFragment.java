@@ -92,11 +92,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Item
     }
 
     @Override
-    public void onClick(View view, int position) {
+    public void onClick(Track track) {
     }
 
     @Override
-    public void onShow(View view, int position) {
+    public void onShow(Track track) {
     }
 
     @Override
