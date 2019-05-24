@@ -49,6 +49,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
         private TextView mTextPosition;
         private ImageButton mImageShow;
         private ItemClickRecyclerView mItemClickRecyclerView;
+        private Track mTrack;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +62,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
         }
 
         public void bindData(int position, Track track) {
+            mTrack = track;
             mTextSongName.setText(track.getTitle());
             mTextPosition.setText(String.valueOf(++position));
             mTextAuthName.setText(track.getArtist());
@@ -74,10 +76,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.image_show_infor:
-                    mItemClickRecyclerView.onShow(itemView, getLayoutPosition());
+                    mItemClickRecyclerView.onShow(mTrack);
                     break;
                 default:
-                    mItemClickRecyclerView.onClick(itemView, getLayoutPosition());
+                    mItemClickRecyclerView.onClick(mTrack);
                     break;
             }
         }
