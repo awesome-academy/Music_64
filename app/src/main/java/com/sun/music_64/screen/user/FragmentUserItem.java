@@ -13,23 +13,27 @@ import android.view.ViewGroup;
 
 import com.sun.music_64.R;
 import com.sun.music_64.data.model.Track;
-import com.sun.music_64.data.sqlite.DBManagerTrack;
-import com.sun.music_64.screen.genrescreen.GenrePresenter;
 import com.sun.music_64.screen.genrescreen.ItemClickRecyclerView;
 import com.sun.music_64.screen.user.favorite.FavoriteAdapter;
 import com.sun.music_64.screen.user.favorite.FavoriteContract;
 import com.sun.music_64.screen.user.favorite.FavoritePresenter;
 import com.sun.music_64.screen.user.favorite.ItemclickRecyclerFavorite;
+import com.sun.music_64.screen.user.musicoffline.MusicOffAdapter;
+import com.sun.music_64.screen.user.musicoffline.MusicOffLineContract;
+import com.sun.music_64.screen.user.musicoffline.MusicOfflinePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentUserItem extends Fragment implements ItemclickRecyclerFavorite, FavoriteContract.View {
+public class FragmentUserItem extends Fragment implements ItemclickRecyclerFavorite, FavoriteContract.View,MusicOffLineContract.View, ItemClickRecyclerView {
 
     private static final String KEY_COLOR = "key_color";
     private FavoriteAdapter mFavoriteAdapter;
-    private RecyclerView mRecyclerFavorite;
+    private MusicOffAdapter mMusicOffAdapter;
+    private RecyclerView mRecyclerTrack;
     private FavoritePresenter mFavoritePresenter;
+    private MusicOfflinePresenter mMusicOfflinePresenter;
+    private LinearLayoutManager mLinearLayoutManager;
 
     public FragmentUserItem() {
 
@@ -47,36 +51,54 @@ public class FragmentUserItem extends Fragment implements ItemclickRecyclerFavor
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mRootView = inflater.inflate(R.layout.fragment_user_instance, container, false);
         ConstraintLayout constraintLayout = mRootView.findViewById(R.id.constraint_user_track);
-        initRecyclerTrack(mRootView);
+        initRecycler(mRootView);
+        initPresenter();
         switch (getArguments().getInt(KEY_COLOR)) {
             case 1:
-                initPresenter();
+                initRecyclerTrack();
+                loadFavorite();
                 break;
             case 2:
                 constraintLayout.setBackgroundColor(Color.RED);
                 break;
             case 3:
-                constraintLayout.setBackgroundColor(Color.YELLOW);
+                initRecyclerTrackOffline();
+                loadMusicOff();
                 break;
         }
         return mRootView;
     }
 
-    public void initRecyclerTrack(View view) {
-        mRecyclerFavorite = view.findViewById(R.id.recycler_user_track);
-        mFavoriteAdapter = new FavoriteAdapter(new ArrayList<Track>(), this);
+    public void initRecycler(View view) {
+        mRecyclerTrack = view.findViewById(R.id.recycler_user_track);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        mRecyclerFavorite.setLayoutManager(linearLayoutManager);
-        mRecyclerFavorite.setAdapter(mFavoriteAdapter);
+        mRecyclerTrack.setLayoutManager(linearLayoutManager);
+    }
+
+    public void initRecyclerTrack() {
+        mFavoriteAdapter = new FavoriteAdapter(new ArrayList<Track>(), this);
+        mRecyclerTrack.setAdapter(mFavoriteAdapter);
+    }
+
+    public void initRecyclerTrackOffline() {
+        mMusicOffAdapter = new MusicOffAdapter(new ArrayList<Track>(), this);
+        mRecyclerTrack.setAdapter(mMusicOffAdapter);
     }
 
     private void initPresenter() {
         mFavoritePresenter = new FavoritePresenter();
         mFavoritePresenter.setView(this, getActivity().getApplicationContext());
-        //loadData();
+        mMusicOfflinePresenter = new MusicOfflinePresenter();
+        mMusicOfflinePresenter.setView(this);
+    }
 
+    private void loadFavorite(){
         mFavoritePresenter.handleAddTrack(createTrack());
         mFavoritePresenter.handleLoadTrack();
+    }
+
+    private void loadMusicOff(){
+        mMusicOfflinePresenter.handleLoadTrackOffline(getActivity().getApplicationContext());
     }
 
     private Track createTrack() {
@@ -90,10 +112,6 @@ public class FragmentUserItem extends Fragment implements ItemclickRecyclerFavor
         trackBuilder.setDownload(true);
         trackBuilder.setDownloadUrl("asdasd");
         return trackBuilder.buildTrack();
-    }
-
-    private void loadData() {
-        mFavoritePresenter.handleLoadTrack();
     }
 
     @Override
@@ -142,4 +160,13 @@ public class FragmentUserItem extends Fragment implements ItemclickRecyclerFavor
 
     }
 
+    @Override
+    public void loadTrackOfflineSuccess(List<Track> tracks) {
+        mMusicOffAdapter.setData(tracks);
+    }
+
+    @Override
+    public void loadTrackOfflineFailure(String error) {
+
+    }
 }

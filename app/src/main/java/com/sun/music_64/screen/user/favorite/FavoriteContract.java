@@ -11,7 +11,6 @@ public interface FavoriteContract {
 
         void addTrackFaill();
 
-
         void loadTrackSuccess(List<Track> tracks);
 
         void loadTrackFailure(String error);

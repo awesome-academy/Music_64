@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.sun.music_64.R;
 import com.sun.music_64.data.model.Track;
-import com.sun.music_64.screen.genrescreen.ItemClickRecyclerView;
 
 import java.util.List;
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class FavoritePresenter implements FavoriteContract.Presenter {
 
+    private final static int RESULT_DELETE = 1;
     private FavoriteContract.View mView;
     private DBManagerTrack mDBManager;
 
@@ -33,7 +34,7 @@ public class FavoritePresenter implements FavoriteContract.Presenter {
 
     @Override
     public void handledeleteTrack(Track track) {
-        if (mDBManager.deleteTrack(track) >= 1) {
+        if (mDBManager.deleteTrack(track) >= RESULT_DELETE) {
             mView.deleteTrackSuccess();
         } else {
             mView.deleteTrackFailt();
