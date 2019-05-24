@@ -17,4 +17,8 @@
     <string name="user">Le bao binh</string>
     <string name="error_play_track">Can not play track</string>
     <string name="search">Tìm kiếm</string>
+    <string name="title_added">Added</string>
+    <string name="title_now_playing">Playing list</string>
+    <string name="title_favourite">Add to favourite</string>
+    <string name="title_playlist">Add to playing list</string>
 </resources>

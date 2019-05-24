@@ -2,17 +2,16 @@ package com.sun.music_64.screen.genrescreen;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 
 import com.sun.music_64.R;
 import com.sun.music_64.data.model.Track;
+import com.sun.music_64.screen.option.OptionFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,11 +57,13 @@ public class GenreActivity extends AppCompatActivity implements GenreContract.Vi
     }
 
     @Override
-    public void onClick(View view, int position) {
+    public void onClick(Track track) {
     }
 
     @Override
-    public void onShow(View view, int position) {
+    public void onShow(Track track) {
+        OptionFragment optionFragment = OptionFragment.getInstance(track);
+        optionFragment.show(getSupportFragmentManager(), optionFragment.getTag());
     }
 
     @Override

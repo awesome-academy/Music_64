@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_5">
+
+    <ImageView
+        android:id="@+id/image_artwork_option"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_margin="@dimen/dp_5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/allmusicfake"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_title_option"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_black"
+        android:layout_marginTop="@dimen/dp_30"
+        android:padding="@dimen/dp_5"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toTopOf="@id/text_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_artwork_option"
+        app:layout_constraintTop_toTopOf="@id/image_artwork_option"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/text_artist_option"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/dp_5"
+        android:textColor="@color/color_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_artwork_option"
+        app:layout_constraintTop_toBottomOf="@id/text_title_option" />
+
+    <ImageView
+        android:id="@+id/image_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:padding="@dimen/dp_5"
+        android:src="@drawable/ic_not_favorite"
+        android:tint="@color/color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_artwork_option" />
+
+    <TextView
+        android:id="@+id/text_favorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:padding="@dimen/dp_5"
+        android:text="@string/title_favourite"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="@id/image_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_favorite"
+        app:layout_constraintTop_toTopOf="@id/image_favorite" />
+
+    <ImageView
+        android:id="@+id/image_playing_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:padding="@dimen/dp_5"
+        android:src="@drawable/ic_queue_play_next_black_24dp"
+        android:tint="@color/color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_favorite" />
+
+    <TextView
+        android:id="@+id/text_playing_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:padding="@dimen/dp_5"
+        android:text="@string/title_playlist"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="@id/image_playing_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_playing_list"
+        app:layout_constraintTop_toTopOf="@id/image_playing_list" />
+
+</android.support.constraint.ConstraintLayout>
