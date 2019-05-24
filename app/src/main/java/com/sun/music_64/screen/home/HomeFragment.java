@@ -17,6 +17,7 @@ import com.sun.music_64.data.model.Track;
 import com.sun.music_64.screen.genrescreen.GenreActivity;
 import com.sun.music_64.screen.genrescreen.GenreEntity;
 import com.sun.music_64.screen.genrescreen.ItemClickRecyclerView;
+import com.sun.music_64.screen.searchscreen.SearchingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,12 +78,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Item
                 gotoGenresActivity(GenreEntity.GENRES_COUNTRY);
                 break;
             case R.id.search_home:
+                gotoSearchingActivity();
                 break;
         }
     }
 
     private void gotoGenresActivity(String genre) {
         startActivity(GenreActivity.getIntent(getActivity().getApplicationContext(), genre));
+    }
+
+    private void gotoSearchingActivity() {
+        startActivity(SearchingActivity.getIntent(getActivity().getApplicationContext()));
     }
 
     @Override
@@ -105,7 +111,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Item
     private void initUiAndRegisterListener(View view) {
         mToolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
-        view.findViewById(R.id.search_home);
+        view.findViewById(R.id.search_home).setOnClickListener(this);
         view.findViewById(R.id.image_all_music).setOnClickListener(this);
         view.findViewById(R.id.image_all_audio).setOnClickListener(this);
         view.findViewById(R.id.image_ambient).setOnClickListener(this);

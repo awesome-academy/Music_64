@@ -12,12 +12,11 @@ public class StringUtils {
                 , offset);
     }
 
-    public static String initSearchApi(String keySearch, int limit, int offset) {
+    public static String initSearchApi(String keySearch) {
         return String.format(Constants.BASE_SEARCH_URL
                 , keySearch
                 , BuildConfig.CLIENT_ID
-                , limit
-                , offset);
+        );
     }
 
     public static String initDownloadUrl(int trackId) {
