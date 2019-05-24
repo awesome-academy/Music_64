@@ -249,7 +249,7 @@ public class PlayMusicService extends Service implements
         }
     }
 
-    public Track getCurrentTrack(){
+    public Track getCurrentTrack() {
         return mManager.getCurrentTrack();
     }
 

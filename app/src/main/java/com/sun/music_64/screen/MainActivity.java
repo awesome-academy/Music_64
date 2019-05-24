@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.sun.music_64.R;
 import com.sun.music_64.screen.home.HomeFragment;
+import com.sun.music_64.screen.user.UserFragment;
 
 public class MainActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements
                         .commit();
                 break;
             case R.id.menu_user:
+                mManager.beginTransaction().replace(R.id.frame_main, UserFragment.getInstance())
+                        .commit();
                 break;
             default:
                 break;
